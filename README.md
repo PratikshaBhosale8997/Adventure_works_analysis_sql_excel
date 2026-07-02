@@ -53,10 +53,10 @@ Adventure-Works-SQL-Analysis/
 
 ## 👩‍💻 Author
 **Pratiksha Subhash Bhosale**  
-Data Analyst Intern at AI Variant (Nov 2025 – May 2026)
 
 ## 📧 Contact
-[Your LinkedIn URL or Email]
+pratikshabhosale1501@gmail.com
+- 💼 LinkedIn: [linkedin.com/in/profile](https://www.linkedin.com/in/pratiksha-bhosale-6b433837b/)
 
 ---
-⭐ If you find this useful, give it a star!
+⭐ If you find this project useful, give it a star on GitHub!
