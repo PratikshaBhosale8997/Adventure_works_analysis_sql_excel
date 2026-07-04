@@ -3,10 +3,10 @@
 ## 📌 Project Overview
 This project analyzes global sales data for **Adventure Works Cycles**, a fictional bicycle company operating in North America, Europe, and Asia. The business wanted to expand market share, reduce costs, and target top customers — but lacked automated reporting.
 
-I used **Excel for data cleaning** and **MySQL for all analysis** to uncover key business KPIs and deliver actionable insights.
+I used **Excel for data validation** and **MySQL for the complete ETL pipeline and analysis** — from combining tables to building date dimensions and calculating KPIs.
 
 ## 🎯 Business Problem
-Adventure Works had messy, scattered raw data across multiple tables. Management couldn't easily track:
+Adventure Works had messy, scattered raw data across **two separate sales tables**. Management couldn't easily track:
 - Total revenue and profit
 - Profit margins
 - Year-over-year growth trends
@@ -16,8 +16,33 @@ Adventure Works had messy, scattered raw data across multiple tables. Management
 ## 🛠️ Tools Used
 | Tool | Purpose |
 |------|---------|
-| **Microsoft Excel** | Data cleaning – removed duplicates, standardized `OrderDateKey` format, handled null values |
-| **MySQL** | Data extraction, joins, aggregations, date functions, KPI calculations |
+| **Microsoft Excel** | Initial data validation and quick checks |
+| **MySQL** | Data integration, transformation, and complete analysis |
+
+## 🔄 Data Transformation Pipeline
+
+### Step 1: Combine Sales Tables
+- Used `UNION ALL` to merge `factinternetsales` and `factinternetsalesnew` into a single view `sales_combined`.
+
+### Step 2: Enrich with Dimensions
+- `LEFT JOIN` with `dimproduct` to bring `EnglishProductName` and `UnitPrice`.
+- `LEFT JOIN` with `dimcustomer` to create `CustomerFullName` (First + Middle + Last).
+
+### Step 3: Create Date Dimensions
+- Converted `OrderDateKey` (integer format YYYYMMDD) to proper `DATE` using `STR_TO_DATE`.
+- Extracted: `Year`, `MonthNo`, `MonthFullName`, `Quarter`, `YearMonth`, `WeekdayNo`, `WeekdayName`.
+- Built custom **Financial Year** (July–June) with `FinancialMonth` and `FinancialQuarter`.
+
+### Step 4: Calculate Cost & Profit
+- `ProductionCost = ProductionStandardCost × OrderQuantity`
+- `Profit = SalesAmount - ProductionStandardCost`
+
+### Step 5: Aggregate KPIs
+- Calculated total revenue, cost, profit, orders, and profit margin.
+- Grouped by year and month to find trends.
+- Ranked top 10 products and top 10 customers.
+
+---
 
 ## 📊 Key Results & KPIs
 
@@ -93,11 +118,15 @@ Adventure Works had messy, scattered raw data across multiple tables. Management
 ## 🗃️ SQL Queries Included
 | File | Description |
 |------|-------------|
-| `01_Overall_KPIs.sql` | Total revenue, cost, profit, orders, and profit margin |
-| `02_Sales_by_Year.sql` | Year-over-year revenue trends |
-| `03_Sales_by_Month.sql` | Monthly revenue for all years / peak year |
-| `04_Top_10_Products.sql` | Best-selling products (JOIN with `dimproduct`) |
-| `05_Top_10_Customers.sql` | Highest-spending customers (JOIN with `dimcustomer`) |
+| `00_Combine_Sales_Tables.sql` | `UNION ALL` to merge both sales tables |
+| `01_Enrich_Product_Customer.sql` | `LEFT JOIN` with product & customer dimensions |
+| `02_Date_Dimensions.sql` | `STR_TO_DATE`, Year, Month, Quarter, Financial Year |
+| `03_Cost_and_Profit.sql` | ProductionCost and Profit calculations |
+| `04_Overall_KPIs.sql` | Total revenue, cost, profit, margin, orders |
+| `05_Sales_by_Year.sql` | Year-over-year revenue trends |
+| `06_Sales_by_Month.sql` | Monthly revenue trends |
+| `07_Top_10_Products.sql` | Best-selling products |
+| `08_Top_10_Customers.sql` | Highest-spending customers |
 
 ## 📌 Recommendations
 - **Stock up** on Mountain-200 bikes before **December** (holiday peak).
