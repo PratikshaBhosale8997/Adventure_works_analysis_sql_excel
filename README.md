@@ -40,7 +40,7 @@ Adventure Works had messy, scattered raw data across multiple tables. Management
 
 > **Key Insight:** Massive **180% growth** from 2012 ($5.84M) to 2013 ($16.35M).
 
-### 📅 Monthly Sales Trend (2013)
+### 📅 Monthly Sales Trend (All 12 Months)
 | Month | Revenue |
 |-------|---------|
 | December | $1,874,360.29 |
@@ -51,8 +51,12 @@ Adventure Works had messy, scattered raw data across multiple tables. Management
 | September | $1,447,495.69 |
 | July | $1,371,675.81 |
 | May | $1,284,592.93 |
+| March | $1,049,907.39 |
+| April | $1,046,022.77 |
+| January | $857,689.91 |
+| February | $771,348.74 |
 
-> **Key Insight:** **December** is the peak month — ideal for holiday marketing campaigns.
+> **Key Insight:** December is the peak month — ideal for holiday marketing campaigns.
 
 ### 🏆 Top 10 Products
 | Rank | Product Name | Total Sales |
@@ -65,8 +69,10 @@ Adventure Works had messy, scattered raw data across multiple tables. Management
 | 6 | Mountain-200 Silver, 42 | $1,257,434.57 |
 | 7 | Road-150 Red, 48 | $1,205,876.99 |
 | 8 | Road-150 Red, 62 | $1,202,298.72 |
+| 9 | Road-150 Red, 52 | $1,080,637.54 |
+| 10 | Road-150 Red, 56 | $1,055,589.65 |
 
-> **Key Insight:** Mountain-200 series dominates — focus inventory and promotions here.
+> **Key Insight:** Mountain-200 series dominates the Top 6 — focus inventory and promotions here.
 
 ### 👤 Top 10 Customers
 | Rank | Customer Name | Total Sales |
@@ -79,13 +85,17 @@ Adventure Works had messy, scattered raw data across multiple tables. Management
 | 6 | Rosa Hu | $13,215.65 |
 | 7 | Brandi Gill | $13,195.64 |
 | 8 | Brad She | $13,173.19 |
+| 9 | Francisco Sara | $13,164.64 |
+| 10 | Maurice Shan | $12,909.67 |
+
+> **Key Insight:** Top customers are tightly clustered (~$13k) — small incentives could push them higher.
 
 ## 🗃️ SQL Queries Included
 | File | Description |
 |------|-------------|
 | `01_Overall_KPIs.sql` | Total revenue, cost, profit, orders, and profit margin |
 | `02_Sales_by_Year.sql` | Year-over-year revenue trends |
-| `03_Sales_by_Month_2013.sql` | Monthly revenue for peak year 2013 |
+| `03_Sales_by_Month.sql` | Monthly revenue for all years / peak year |
 | `04_Top_10_Products.sql` | Best-selling products (JOIN with `dimproduct`) |
 | `05_Top_10_Customers.sql` | Highest-spending customers (JOIN with `dimcustomer`) |
 
@@ -94,7 +104,6 @@ Adventure Works had messy, scattered raw data across multiple tables. Management
 - Launch **targeted holiday campaigns** in November–December.
 - Offer **loyalty programs** to top customers like Nichole Nara.
 - Investigate **2014 drop** (likely incomplete data) — ensure full-year tracking.
-
 
 ## 👩‍💻 Author
 **Pratiksha Subhash Bhosale**  
